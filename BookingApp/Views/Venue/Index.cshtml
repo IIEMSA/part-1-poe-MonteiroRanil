@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BookingApp.Models.Venue>
+
+@{
+    ViewData["Title"] = "VenueInfo";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark text-center">
+        <tr>
+            <th>Venue ID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th>Image URL</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody class="text-center align-middle">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.VenueID</td>
+                <td>@item.VenueName</td>
+                <td>@item.Location</td>
+                <td>@item.Capacity</td>
+                <td>
+                    @item.ImageURL
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.VenueID">Edit</a>
+                    <a class="btn btn-sm btn-info text-white" asp-action="Details" asp-route-id="@item.VenueID">Details</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.VenueID">Delete</a>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>
